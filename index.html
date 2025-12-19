@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignFire - Handcrafted Mandalas on Canvas & Stone</title>
+    <meta name="robots" content="index, follow">
+    <meta name="description" content="Visual Artist Jarrett Terrill, professionally known as SignFire, paints unique mandalas on canvas and stone boulders. Terrill coined the term 'ALR' which stands for Ambient Light Responsiveness to indicate the level at which a painting reacts to its environment with glitter, gloss glow-in-the-dark or blacklight reactive neon.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #1a0808;
+            color: #f5f5f5;
+            line-height: 1.7;
+            font-size: 17px;
+            letter-spacing: 0.01em;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', 'Anton', 'Arial Narrow', 'Impact', sans-serif;
+            font-size: clamp(4rem, 10vw, 7rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            line-height: 0.9;
+            letter-spacing: 0.05em;
+            background: linear-gradient(135deg, #fff 0%, #f0c080 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .logo-title img {
+            height: clamp(80px, 12vw, 120px);
+            width: auto;
+            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin-bottom: 2rem;
+            color: #f0c080;
+        }
+
+        /* Hero Section */
+        header.hero {
+            position: relative;
+            text-align: center;
+            padding: 8rem 2rem 6rem;
+            background: linear-gradient(180deg, rgba(26,8,8,0.7) 0%, rgba(26,8,8,0.95) 100%),
+                        url("images/hero.jpg") center/cover no-repeat;
+            background-attachment: fixed;
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header.hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(139,69,19,0.15) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        header.hero > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            margin-bottom: 2rem;
+            color: #d4d4d4;
+            font-weight: 300;
+            letter-spacing: 0.03em;
+        }
+
+        .hero-tagline {
+            font-style: italic;
+            color: #b8b8b8;
+            margin: 2rem auto;
+            max-width: 700px;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.03em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139,69,19,0.3);
+            border: 2px solid transparent;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139,69,19,0.5);
+            background: linear-gradient(135deg, #a0522d 0%, #8b4513 100%);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #2c5f2d 0%, #3d7a3e 100%);
+            box-shadow: 0 6px 20px rgba(44,95,45,0.4);
+            padding: 1.2rem 3rem;
+            font-size: 1.1rem;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #3d7a3e 0%, #2c5f2d 100%);
+            box-shadow: 0 10px 30px rgba(44,95,45,0.6);
+        }
+
+        /* Shop Section */
+        .shop-callout {
+            text-align: center;
+            margin: 3rem auto;
+            padding: 3rem 2rem;
+            background: linear-gradient(135deg, rgba(240,240,240,0.05) 0%, rgba(240,240,240,0.02) 100%);
+            border-radius: 20px;
+            max-width: 600px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .shop-callout p {
+            margin-top: 1rem;
+            color: #b8b8b8;
+            font-size: 0.95rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        section:nth-child(even) {
+            background: rgba(255,255,255,0.02);
+        }
+
+        /* Gallery */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .grid img {
+            width: 100%;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .grid img:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 12px 40px rgba(139,69,19,0.4);
+        }
+
+        /* About Section */
+        #about p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #d4d4d4;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Form */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            max-width: 600px;
+            margin: 3rem auto 0;
+        }
+
+        input, textarea {
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #8b4513;
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 0 0 4px rgba(139,69,19,0.1);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            color: #fff;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            letter-spacing: 0.03em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139,69,19,0.3);
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139,69,19,0.5);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(0,0,0,0.3);
+            font-size: 0.9rem;
+            color: #999;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            letter-spacing: 0.02em;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header.hero {
+                padding: 5rem 1.5rem 4rem;
+                min-height: 75vh;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .shop-callout {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection Color */
+        ::selection {
+            background: #8b4513;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body><a href="https://signfire.net/cdn-cgi/content?id=pgFf2vJ4GK5wulSdxn4lDuBjNNiFJHkogRI568CiOo0-1766147162.0420213-1.0.1.1-2tDkmWGrYxb5DgFWHk4Rl3p521E46RARtjrY_VMNCAg" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="logo-title">
+            <img src="images/logo.png" alt="SignFire Logo">
+            <h1>SignFire</h1>
+        </div>
+        <p class="hero-subtitle">Keep Tabs On Me 📌 Contact Info Below</p>
+
+        <div class="shop-callout">
+            <a href="https://signfire-fine-art.myshopify.com" class="btn btn-primary">
+                🛒 Shop My Art Collection
+            </a>
+            <p>Visit my online store to purchase original mandalas</p>
+        </div>
+
+        <p class="hero-tagline">Coming Soon: Tips for Artists & Collectors, Artists Manifesto, A Substack, A Discord Server and even a few NFTs!</p>
+        
+        <a href="#gallery" class="btn">Explore My Gallery</a>
+    </header>
+
+    <!-- Gallery -->
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <div class="grid">
+            <img src="images/painting1.jpg" alt="Canvas Mandala">
+            <img src="images/stone1.jpg" alt="Painted Stone">
+            <img src="images/painting2.jpg" alt="Canvas Mandala">
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+        <h2>About the Artist</h2>
+        <p>My name is Jarrett Terrill. I create freehand acrylic mandalas on canvas and on stone. Each piece is unique: That means no AI, it's not a stencil either, and there will be no prints of any individual Mandala that I have painted.</p>
+
+        <p>It also means that my Mandalas are not perfect — rather, they have flaws and character just like me.</p>
+
+        <p>My process is shaped by physical and emotional challenges, my spirituality (American Buddhism), determination, and my love of art, film, music & multiculturalism.</p>
+
+        <p>I began painting Mandalas in around 2008 and I was initially inspired by Tibetan tradition of carefully and strategically sifting colored sands into complex designs —  but my mandalas would be different.</p>
+
+        <p>Although  my first collection ("Cultures & Ethics"— sold entirely to an anonymous  collector from Aquarian Age Art Gallery in Boca Raton, FL) did use sands of various colors mixed into the acrylic paint for both texture and symbolism, these mandalas would have a longer life-span.</p>
+
+        <p>You see, when the monks are finished with the beautiful and awe-inspiring production they go across it with brooms and sweep the sands into the wind and the mandala is destroyed forever.</p>
+
+        <p>This process is intentional and symbolic. It is meant to celebrate or show respect for a spiritual principle called impermanence.  The idea behind impermanence is simply that nothing lasts forever and we can attain enlightenment, in part, by letting go of our unhealthy attachments.</p>
+
+        <p>Attachments are like little lies that we tell ourselves.  We say that we "own" things and we say that "we can't live without" some things that we clearly can.  We tell other people that we will "always" be there for them, knowing in our minds and spirits that it is a cruel lie.</p>
+
+        <p>So how is it that I can paint mandalas that harden so permanently and have the audacity to sell them for people to hang in their homes... for years, ostensibly?</p>
+
+        <p>Because life works the same for me as it does everyone else.  I encourage people to enjoy my art for as long as they feel it is appropriate and then sell it, donate it, gift it or even leave it somewhere... There is no need to destroy these mandalas (although, I can't honestly complain about it if someone were to do just that).  You can still observe a form of impermanence by understanding that even these meaningful works of art cannot last forever — and then by guiding them in one farewell direction or another.</p>
+
+        <p>After more than a decade since that successful gallery show in Boca, I am painting again...  with more complex thematic elements and broader creative inspiration than ever before... And I am even branching out into uncharted methods and mediums... I might try my hand at Barn Quilts and I am studying the creation of NFTs.</p>
+
+        <p>Most notably, I have a sturdy collection of indoor/outdoor ornamental Garden Boulders (Mandalas painted in weatherproof epoxy and acrylic on canyon flats).   See them in their own collection on this site, separate from the canvas  collections.</p>
+
+        <p>I want to hear from my community too. Have a public  works project that you think I might be right for?   Want to commission me to paint your Barn Quilt or stylize a Family Crest for you?  Just fill out the webform on this page or hit me up on Bluesky.</p>
+    </section>
+
+    <!-- Updates -->
+    <section id="updates">
+        <h2>Updates</h2>
+        <p style="text-align: center; margin-bottom: 2rem;">This site is still new, and big things are coming. Pin it to your favorites and check back soon.</p>
+        <div style="text-align: center;">
+            <a href="https://bsky.app/profile/signfire.bsky.social" class="btn">🦋 Flutter by Signfire on Bluesky</a>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <form action="https://formspree.io/f/xnnovdyp" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" placeholder="Your Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 SignFire's Handcrafted Mandalas on Canvas & Stone</p>
+    </footer>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9b06e2d2cf5b2276',t:'MTc2NjE0NzE2Mg=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
