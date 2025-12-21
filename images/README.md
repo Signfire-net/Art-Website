@@ -12,26 +12,19 @@ Please add the following image files to this directory:
 - Format: PNG with transparent background preferred
 - Used in: Hero section header
 
-### 2. **hero.jpg**
-- Background image for the hero section
-- Recommended size: 1920x1080px or larger
-- Format: JPG
-- Should be a compelling image that represents your art
-- Used in: Hero section background
-
-### 3. **painting1.jpg**
+### 2. **painting1.jpg**
 - Gallery image - Canvas Mandala
 - Recommended size: 800x800px or larger
 - Format: JPG
 - Used in: Gallery section
 
-### 4. **stone1.jpg**
+### 3. **stone1.jpg**
 - Gallery image - Painted Stone/Boulder
 - Recommended size: 800x800px or larger
 - Format: JPG
 - Used in: Gallery section
 
-### 5. **painting2.jpg**
+### 4. **painting2.jpg**
 - Gallery image - Canvas Mandala
 - Recommended size: 800x800px or larger
 - Format: JPG
