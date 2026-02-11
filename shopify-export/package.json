@@ -6,8 +6,5 @@
   "scripts": {
     "export": "node export-products.js",
     "export:dry-run": "DRY_RUN=true node export-products.js"
-  },
-  "dependencies": {
-    "@shopify/shopify-api": "^11.0.0"
   }
 }
