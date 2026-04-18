@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | SignFire</title>
+    <meta name="description" content="Gallery of original freehand mandalas on canvas and stone by SignFire artist Jarrett Terrill.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #1a0808;
+            color: #f5f5f5;
+            line-height: 1.7;
+            font-size: 17px;
+            letter-spacing: 0.01em;
+        }
+
+        ::selection {
+            background: #8b4513;
+            color: #fff;
+        }
+
+        /* Tab Navigation */
+        .tab-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 4, 4, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        .tab-nav a {
+            display: inline-block;
+            padding: 0.9rem 1.5rem;
+            color: #777;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .tab-nav a:hover {
+            color: #d4d4d4;
+        }
+
+        .tab-nav a.active {
+            color: #f0c080;
+            border-bottom-color: #f0c080;
+        }
+
+        /* Page header */
+        .page-header {
+            position: relative;
+            text-align: center;
+            padding: 5rem 2rem 4rem;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 50% 30%, rgba(139,69,19,0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .page-header > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-family: 'Bebas Neue', 'Anton', 'Arial Narrow', Impact, sans-serif;
+            font-size: clamp(3.5rem, 9vw, 6rem);
+            font-weight: 400;
+            line-height: 0.9;
+            letter-spacing: 0.05em;
+            background: linear-gradient(135deg, #fff 0%, #f0c080 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .page-subtitle {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            font-weight: 400;
+            color: #b8b8b8;
+            font-style: italic;
+        }
+
+        /* Gallery */
+        .gallery-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem 5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid img {
+            width: 100%;
+            border-radius: 12px;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .grid img:hover {
+            transform: scale(1.05) translateY(-5px);
+            box-shadow: 0 12px 40px rgba(139,69,19,0.4);
+        }
+
+        .shop-link {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #2c5f2d 0%, #3d7a3e 100%);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.03em;
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 20px rgba(44,95,45,0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(44,95,45,0.6);
+            background: linear-gradient(135deg, #3d7a3e 0%, #2c5f2d 100%);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(0,0,0,0.3);
+            font-size: 0.9rem;
+            color: #999;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            letter-spacing: 0.02em;
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 3.5rem 1.5rem 3rem;
+            }
+
+            .gallery-section {
+                padding: 3rem 1.5rem 4rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tab-nav a {
+                padding: 0.8rem 0.9rem;
+                font-size: 0.68rem;
+                letter-spacing: 0.08em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="tab-nav">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/gallery.html" class="active">Gallery</a>
+        <a href="/events.html">Events</a>
+    </nav>
+
+    <header class="page-header">
+        <h1>Gallery</h1>
+        <p class="page-subtitle">Original freehand mandalas on canvas & stone</p>
+    </header>
+
+    <main class="gallery-section">
+        <div class="grid">
+            <img src="images/painting1.jpg" alt="Canvas Mandala">
+            <img src="images/stone1.jpg" alt="Painted Stone">
+            <img src="images/painting2.jpg" alt="Canvas Mandala">
+        </div>
+
+        <div class="shop-link">
+            <a href="https://signfire-fine-art.myshopify.com" class="btn">🛒 Shop My Art Collection</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SignFire's Handcrafted Mandalas on Canvas & Stone</p>
+    </footer>
+
+</body>
+</html>

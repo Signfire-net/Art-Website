@@ -33,12 +33,48 @@
             color: #fff;
         }
 
+        /* Tab Navigation */
+        .tab-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 4, 4, 0.97);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex;
+            justify-content: center;
+            padding: 0 1rem;
+        }
+
+        .tab-nav a {
+            display: inline-block;
+            padding: 0.9rem 1.5rem;
+            color: #777;
+            text-decoration: none;
+            font-size: 0.75rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-weight: 500;
+            border-bottom: 2px solid transparent;
+            margin-bottom: -1px;
+            transition: color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .tab-nav a:hover {
+            color: #d4d4d4;
+        }
+
+        .tab-nav a.active {
+            color: #f0c080;
+            border-bottom-color: #f0c080;
+        }
+
         /* Page header */
         .page-header {
             position: relative;
             text-align: center;
             padding: 5rem 2rem 4rem;
-            background: linear-gradient(180deg, rgba(26,8,8,0.7) 0%, rgba(26,8,8,0.95) 100%);
             border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
@@ -46,35 +82,13 @@
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(139,69,19,0.15) 0%, transparent 70%);
+            background: radial-gradient(circle at 50% 50%, rgba(139,69,19,0.1) 0%, transparent 70%);
             pointer-events: none;
         }
 
         .page-header > * {
             position: relative;
             z-index: 1;
-        }
-
-        .site-nav {
-            margin-bottom: 2.5rem;
-        }
-
-        .site-nav a {
-            color: #b8b8b8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .site-nav a:hover {
-            color: #f0c080;
-        }
-
-        .site-nav a::before {
-            content: '← ';
         }
 
         .page-title {
@@ -230,21 +244,29 @@
 
         /* Responsive */
         @media (max-width: 768px) {
-            .page-header {
-                padding: 4rem 1.5rem 3rem;
+            thead th:nth-child(4),
+            tbody td:nth-child(4) {
+                display: none;
             }
 
             main {
                 padding: 2.5rem 1.25rem 4rem;
             }
+        }
 
-            thead th:nth-child(4),
-            tbody td:nth-child(4) {
-                display: none;
+        @media (max-width: 768px) {
+            .page-header {
+                padding: 3.5rem 1.5rem 3rem;
             }
         }
 
         @media (max-width: 480px) {
+            .tab-nav a {
+                padding: 0.8rem 0.9rem;
+                font-size: 0.68rem;
+                letter-spacing: 0.08em;
+            }
+
             thead th:nth-child(5),
             tbody td:nth-child(5) {
                 display: none;
@@ -254,10 +276,14 @@
 </head>
 <body>
 
+    <nav class="tab-nav">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+        <a href="/gallery.html">Gallery</a>
+        <a href="/events.html" class="active">Events</a>
+    </nav>
+
     <header class="page-header">
-        <nav class="site-nav">
-            <a href="/">signfire.net</a>
-        </nav>
         <div class="page-title">Events</div>
         <p class="page-subtitle">Some upcoming events that I find interesting</p>
     </header>
