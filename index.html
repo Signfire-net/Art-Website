@@ -192,22 +192,26 @@
             box-shadow: 0 10px 30px rgba(44,95,45,0.6);
         }
 
-        /* Shop callout */
-        .shop-callout {
+        /* Artist photo */
+        .artist-photo {
             text-align: center;
             margin: 3rem auto;
-            padding: 3rem 2rem;
-            background: linear-gradient(135deg, rgba(240,240,240,0.05) 0%, rgba(240,240,240,0.02) 100%);
-            border-radius: 20px;
-            max-width: 600px;
-            border: 1px solid rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
+            max-width: 380px;
         }
 
-        .shop-callout p {
-            margin-top: 1rem;
-            color: #b8b8b8;
-            font-size: 0.95rem;
+        .artist-photo img {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+            display: block;
+        }
+
+        .artist-photo .social-links {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1.25rem;
+            flex-wrap: wrap;
         }
 
         /* Sections */
@@ -294,9 +298,6 @@
                 padding: 3rem 1.5rem;
             }
 
-            .shop-callout {
-                padding: 2rem 1.5rem;
-            }
         }
 
         @media (max-width: 480px) {
@@ -324,11 +325,12 @@
         </div>
         <p class="hero-subtitle">Keep Tabs On Me 📌 Contact Info Below</p>
 
-        <div class="shop-callout">
-            <a href="https://signfire-fine-art.myshopify.com" class="btn btn-primary">
-                🛒 Shop My Art Collection
-            </a>
-            <p>Visit my online store to purchase original mandalas</p>
+        <div class="artist-photo">
+            <img src="images/artist.jpg" alt="SignFire artist Jarrett Terrill with his mandala paintings">
+            <div class="social-links">
+                <a href="https://bsky.app/profile/signfire.bsky.social" class="btn" target="_blank" rel="noopener">🦋 Bluesky</a>
+                <a href="https://www.flickr.com/photos/signfire/" class="btn" target="_blank" rel="noopener">📷 Flickr</a>
+            </div>
         </div>
 
         <p class="hero-tagline">Coming Soon: Tips for Artists & Collectors, Artists Manifesto, A Substack, A Discord Server and even a few NFTs!</p>
