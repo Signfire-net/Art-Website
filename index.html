@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SignFire - Handcrafted Mandalas on Canvas & Stone</title>
+    <title>signfire</title>
     <meta name="robots" content="index, follow">
     <meta name="description" content="Visual Artist Jarrett Terrill, professionally known as SignFire, paints unique mandalas on canvas and stone boulders.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --sand:      #FFEDD4;
+            --slate:     #37474F;
+            --moss:      #2F7466;
+            --moss-deep: #1F5249;
+            --rule:      rgba(55, 71, 79, 0.18);
+            --muted:     #6B7A82;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -21,235 +30,206 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #1a0808;
-            color: #f5f5f5;
-            line-height: 1.7;
-            font-size: 17px;
-            letter-spacing: 0.01em;
+            font-family: 'EB Garamond', Garamond, Georgia, serif;
+            background-color: var(--sand);
+            color: var(--slate);
+            line-height: 1.6;
+            font-size: 18px;
+            font-feature-settings: "kern","liga","onum";
         }
 
         ::selection {
-            background: #8b4513;
-            color: #fff;
+            background: var(--moss);
+            color: var(--sand);
         }
 
-        /* Tab Navigation */
-        .tab-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(15, 4, 4, 0.97);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+        /* Nav */
+        .site-nav {
+            border-bottom: 1px solid var(--rule);
             display: flex;
-            justify-content: center;
-            padding: 0 1rem;
-        }
-
-        .tab-nav a {
-            display: inline-block;
-            padding: 0.9rem 1.5rem;
-            color: #777;
-            text-decoration: none;
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-weight: 500;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
-            transition: color 0.2s ease, border-color 0.2s ease;
-        }
-
-        .tab-nav a:hover {
-            color: #d4d4d4;
-        }
-
-        .tab-nav a.active {
-            color: #f0c080;
-            border-bottom-color: #f0c080;
-        }
-
-        /* Typography */
-        h1 {
-            font-family: 'Bebas Neue', 'Anton', 'Arial Narrow', Impact, sans-serif;
-            font-size: clamp(4rem, 10vw, 7rem);
-            font-weight: 400;
-            margin-bottom: 1rem;
-            line-height: 0.9;
-            letter-spacing: 0.05em;
-            background: linear-gradient(135deg, #fff 0%, #f0c080 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-        }
-
-        h2 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 2rem;
-            color: #f0c080;
-        }
-
-        .logo-title {
-            display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
+            padding: 1.25rem 3rem;
         }
 
-        .logo-title img {
-            height: clamp(80px, 12vw, 120px);
-            width: auto;
-            filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
-            animation: float 3s ease-in-out infinite;
+        .site-nav .wordmark {
+            font-style: italic;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--slate);
+            text-decoration: none;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        .site-nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
+
+        .site-nav .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .site-nav .nav-links a:hover,
+        .site-nav .nav-links a.active { color: var(--slate); }
 
         /* Hero */
-        header.hero {
-            position: relative;
+        .hero {
             text-align: center;
-            padding: 6rem 2rem 6rem;
-            background: linear-gradient(180deg, rgba(26,8,8,0.7) 0%, rgba(26,8,8,0.95) 100%);
-            min-height: 80vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 6rem 2rem 5rem;
+            border-bottom: 1px solid var(--rule);
         }
 
-        header.hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(139,69,19,0.15) 0%, transparent 70%);
-            pointer-events: none;
+        .hero-logo {
+            max-height: 80px;
+            width: auto;
+            display: block;
+            margin: 0 auto 1.5rem;
         }
 
-        header.hero > * {
-            position: relative;
-            z-index: 1;
+        .hero-wordmark {
+            font-style: italic;
+            font-size: 4rem;
+            font-weight: 400;
+            color: var(--slate);
+            line-height: 1;
+            margin-bottom: 1rem;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-            margin-bottom: 2rem;
-            color: #d4d4d4;
-            font-weight: 300;
-            letter-spacing: 0.03em;
-        }
-
-        .hero-tagline {
-            font-style: italic;
-            color: #b8b8b8;
-            margin: 2rem auto;
-            max-width: 700px;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.03em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(139,69,19,0.3);
-            border: 2px solid transparent;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139,69,19,0.5);
-            background: linear-gradient(135deg, #a0522d 0%, #8b4513 100%);
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #2c5f2d 0%, #3d7a3e 100%);
-            box-shadow: 0 6px 20px rgba(44,95,45,0.4);
-            padding: 1.2rem 3rem;
             font-size: 1.1rem;
+            color: var(--muted);
+            font-style: italic;
+            margin-bottom: 3rem;
         }
 
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #3d7a3e 0%, #2c5f2d 100%);
-            box-shadow: 0 10px 30px rgba(44,95,45,0.6);
-        }
-
-        /* Artist photo */
         .artist-photo {
-            text-align: center;
-            margin: 3rem auto;
-            max-width: 380px;
+            max-width: 340px;
+            margin: 0 auto 1.5rem;
         }
 
         .artist-photo img {
             width: 100%;
-            border-radius: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.5);
             display: block;
         }
 
-        .artist-photo .social-links {
+        .social-links {
             display: flex;
-            gap: 1rem;
+            gap: 1.5rem;
             justify-content: center;
-            margin-top: 1.25rem;
+            margin-bottom: 2.5rem;
             flex-wrap: wrap;
         }
 
-        /* Sections */
-        section {
+        .social-links a {
+            color: var(--moss);
+            text-decoration: underline;
+            font-size: 1rem;
+        }
+
+        .social-links a:hover {
+            color: var(--moss-deep);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: var(--moss);
+            color: var(--sand);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: background 0.2s;
+        }
+
+        .btn-primary:hover {
+            background: var(--moss-deep);
+        }
+
+        /* Updates */
+        .updates {
+            max-width: 760px;
+            margin: 0 auto;
             padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: auto;
+            border-bottom: 1px solid var(--rule);
         }
 
-        section:nth-child(even) {
-            background: rgba(255,255,255,0.02);
+        .updates h2 {
+            font-style: italic;
+            font-size: 2.25rem;
+            font-weight: 400;
+            color: var(--slate);
+            margin-bottom: 1.5rem;
         }
 
-        /* Form */
+        .updates p {
+            margin-bottom: 1.5rem;
+            color: var(--slate);
+        }
+
+        .updates-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .btn-inline {
+            display: inline-block;
+            padding: 0.6rem 1.5rem;
+            background: var(--moss);
+            color: var(--sand);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            transition: background 0.2s;
+        }
+
+        .btn-inline:hover {
+            background: var(--moss-deep);
+        }
+
+        /* Contact */
+        .contact {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+
+        .contact h2 {
+            font-style: italic;
+            font-size: 2.25rem;
+            font-weight: 400;
+            color: var(--slate);
+            margin-bottom: 2rem;
+        }
+
         form {
             display: flex;
             flex-direction: column;
-            gap: 1.5rem;
+            gap: 1.25rem;
             max-width: 600px;
-            margin: 3rem auto 0;
+            margin: 0 auto;
         }
 
         input, textarea {
-            padding: 1rem 1.5rem;
-            border: 2px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--rule);
+            background: var(--sand);
+            color: var(--slate);
+            font-family: 'EB Garamond', Garamond, Georgia, serif;
             font-size: 1rem;
-            background: rgba(255,255,255,0.05);
-            color: #fff;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.3s ease;
+            transition: border-color 0.2s;
         }
 
         input:focus, textarea:focus {
             outline: none;
-            border-color: #8b4513;
-            background: rgba(255,255,255,0.08);
-            box-shadow: 0 0 0 4px rgba(139,69,19,0.1);
+            border-color: var(--moss);
         }
 
         textarea {
@@ -258,97 +238,108 @@
         }
 
         button[type="submit"] {
-            padding: 1rem 2rem;
-            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
-            color: #fff;
-            font-weight: 600;
+            padding: 0.75rem 2rem;
+            background: var(--moss);
+            color: var(--sand);
+            font-family: 'EB Garamond', Garamond, Georgia, serif;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
             cursor: pointer;
             border: none;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            letter-spacing: 0.03em;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(139,69,19,0.3);
+            transition: background 0.2s;
+            align-self: flex-start;
         }
 
         button[type="submit"]:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(139,69,19,0.5);
+            background: var(--moss-deep);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(0,0,0,0.3);
-            font-size: 0.9rem;
-            color: #999;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            letter-spacing: 0.02em;
+            padding: 2.5rem 2rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-style: italic;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            header.hero {
-                padding: 4rem 1.5rem 4rem;
-                min-height: 70vh;
+            .site-nav {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            section {
+            .site-nav .nav-links {
+                gap: 1.25rem;
+            }
+
+            .hero {
+                padding: 4rem 1.5rem 3.5rem;
+            }
+
+            .hero-wordmark {
+                font-size: 2.75rem;
+            }
+
+            .updates, .contact {
                 padding: 3rem 1.5rem;
             }
-
         }
 
         @media (max-width: 480px) {
-            .tab-nav a {
-                padding: 0.8rem 0.9rem;
-                font-size: 0.68rem;
-                letter-spacing: 0.08em;
+            .site-nav .nav-links {
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <nav class="tab-nav">
-        <a href="/" class="active">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/gallery.html">Gallery</a>
-        <a href="/events.html">Events</a>
-        <a href="/projects.html">Projects</a>
+    <nav class="site-nav">
+        <a href="/" class="wordmark">signfire</a>
+        <ul class="nav-links">
+            <li><a href="/" class="active">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/gallery.html">Gallery</a></li>
+            <li><a href="/events.html">Events</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+        </ul>
     </nav>
 
-    <header class="hero">
-        <div class="logo-title">
-            <img src="images/logo.png" alt="SignFire Logo">
-            <h1>SignFire</h1>
-        </div>
+    <section class="hero">
+        <img src="images/logo.png" alt="SignFire Logo" class="hero-logo">
+        <div class="hero-wordmark">signfire</div>
         <p class="hero-subtitle">Keep Tabs On Me 📌 Contact Info Below</p>
 
         <div class="artist-photo">
             <img src="artist.jpg" alt="SignFire artist Jarrett Terrill with his mandala paintings">
-            <div class="social-links">
-                <a href="https://bsky.app/profile/signfire.bsky.social" class="btn" target="_blank" rel="noopener">🦋 Bluesky</a>
-                <a href="https://www.flickr.com/photos/signfire/" class="btn" target="_blank" rel="noopener">📷 Flickr</a>
-            </div>
         </div>
 
-        <p class="hero-tagline">Coming Soon: Tips for Artists & Collectors, Artists Manifesto, A Substack, A Discord Server and even a few NFTs!</p>
+        <div class="social-links">
+            <a href="https://bsky.app/profile/signfire.bsky.social" target="_blank" rel="noopener">Bluesky</a>
+            <a href="https://www.flickr.com/photos/signfire/" target="_blank" rel="noopener">Flickr</a>
+        </div>
 
-        <a href="/gallery.html" class="btn">Explore My Gallery</a>
-    </header>
+        <p style="font-style:italic; color:var(--muted); margin-bottom:2rem; max-width:620px; margin-left:auto; margin-right:auto;">Coming Soon: Tips for Artists &amp; Collectors, Artists Manifesto, A Substack, A Discord Server and even a few NFTs!</p>
 
-    <section id="updates">
+        <a href="/gallery.html" class="btn-primary">Explore the Gallery</a>
+    </section>
+
+    <section class="updates" id="updates">
         <h2>Updates</h2>
-        <p style="text-align: center; margin-bottom: 2rem;">This site is still new, and big things are coming. Pin it to your favorites and check back soon.</p>
-        <div style="text-align: center; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="/events.html" class="btn">📅 Events</a>
-            <a href="https://bsky.app/profile/signfire.bsky.social" class="btn">🦋 Flutter by Signfire on Bluesky</a>
+        <p>This site is still new, and big things are coming. Pin it to your favorites and check back soon.</p>
+        <div class="updates-links">
+            <a href="/events.html" class="btn-inline">Events</a>
+            <a href="https://bsky.app/profile/signfire.bsky.social" class="btn-inline">Flutter by Signfire on Bluesky</a>
         </div>
     </section>
 
-    <section id="contact">
+    <section class="contact" id="contact">
         <h2>Contact</h2>
         <form action="https://formspree.io/f/xnnovdyp" method="POST">
             <input type="text" name="name" placeholder="Your Name" required>
@@ -359,7 +350,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 SignFire's Handcrafted Mandalas on Canvas & Stone</p>
+        <p>&copy; 2025 signfire · Jarrett Terrill</p>
     </footer>
 
 </body>
