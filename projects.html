@@ -3,12 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | SignFire</title>
+    <title>Projects — signfire</title>
     <meta name="description" content="SignFire's community projects: the Hide-A-Rock game and litter cleanup efforts in Kankakee, IL.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --sand:      #FFEDD4;
+            --slate:     #37474F;
+            --moss:      #2F7466;
+            --moss-deep: #1F5249;
+            --rule:      rgba(55, 71, 79, 0.18);
+            --muted:     #6B7A82;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -20,95 +29,73 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #1a0808;
-            color: #f5f5f5;
-            line-height: 1.7;
-            font-size: 17px;
-            letter-spacing: 0.01em;
+            font-family: 'EB Garamond', Garamond, Georgia, serif;
+            background-color: var(--sand);
+            color: var(--slate);
+            line-height: 1.6;
+            font-size: 18px;
+            font-feature-settings: "kern","liga","onum";
         }
 
         ::selection {
-            background: #8b4513;
-            color: #fff;
+            background: var(--moss);
+            color: var(--sand);
         }
 
-        /* Tab Navigation */
-        .tab-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(15, 4, 4, 0.97);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+        /* Nav */
+        .site-nav {
+            border-bottom: 1px solid var(--rule);
             display: flex;
-            justify-content: center;
-            padding: 0 1rem;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 3rem;
         }
 
-        .tab-nav a {
-            display: inline-block;
-            padding: 0.9rem 1.5rem;
-            color: #777;
+        .site-nav .wordmark {
+            font-style: italic;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--slate);
             text-decoration: none;
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
+        }
+
+        .site-nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .site-nav .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 0.09em;
             text-transform: uppercase;
-            font-weight: 500;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
-            transition: color 0.2s ease, border-color 0.2s ease;
+            transition: color 0.2s;
         }
 
-        .tab-nav a:hover {
-            color: #d4d4d4;
-        }
-
-        .tab-nav a.active {
-            color: #f0c080;
-            border-bottom-color: #f0c080;
-        }
+        .site-nav .nav-links a:hover,
+        .site-nav .nav-links a.active { color: var(--slate); }
 
         /* Page header */
         .page-header {
-            position: relative;
             text-align: center;
-            padding: 5rem 2rem 4rem;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 4rem 2rem 3.5rem;
+            border-bottom: 1px solid var(--rule);
         }
 
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 50% 30%, rgba(139,69,19,0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .page-header > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        h1 {
-            font-family: 'Bebas Neue', 'Anton', 'Arial Narrow', Impact, sans-serif;
-            font-size: clamp(3.5rem, 9vw, 6rem);
+        .page-header h1 {
+            font-style: italic;
+            font-size: 2.25rem;
             font-weight: 400;
-            line-height: 0.9;
-            letter-spacing: 0.05em;
-            background: linear-gradient(135deg, #fff 0%, #f0c080 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
+            color: var(--slate);
         }
 
-        .page-header p {
-            color: #999;
+        .page-header .subtitle {
+            margin-top: 0.4rem;
+            font-style: italic;
+            color: var(--muted);
             font-size: 1rem;
-            letter-spacing: 0.04em;
         }
 
         /* Projects layout */
@@ -119,9 +106,9 @@
         }
 
         .project-card {
-            margin-bottom: 5rem;
-            padding-bottom: 5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid var(--rule);
+            padding-bottom: 4rem;
+            margin-bottom: 4rem;
         }
 
         .project-card:last-child {
@@ -131,32 +118,24 @@
         }
 
         .project-label {
-            font-size: 0.7rem;
-            letter-spacing: 0.18em;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: #8b4513;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
+            color: var(--muted);
+            margin-bottom: 0.5rem;
         }
 
         .project-title {
-            font-family: 'Bebas Neue', 'Anton', 'Arial Narrow', Impact, sans-serif;
-            font-size: clamp(2.2rem, 5vw, 3.2rem);
+            font-style: italic;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
             font-weight: 400;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            background: linear-gradient(135deg, #fff 0%, #f0c080 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1;
-            margin-bottom: 2rem;
+            color: var(--slate);
+            margin-bottom: 1.5rem;
         }
 
         .project-body p {
-            font-size: 1.05rem;
-            color: #d4d4d4;
-            margin-bottom: 1.4rem;
+            color: var(--slate);
+            margin-bottom: 1.25rem;
         }
 
         .project-body p:last-child {
@@ -164,52 +143,56 @@
         }
 
         .project-body a {
-            color: #f0c080;
+            color: var(--moss);
             text-decoration: none;
-            border-bottom: 1px solid rgba(240,192,128,0.4);
-            transition: border-color 0.2s ease, color 0.2s ease;
+            border-bottom: 1px solid rgba(47,116,102,0.3);
+            transition: border-color 0.2s, color 0.2s;
         }
 
         .project-body a:hover {
-            color: #fff;
-            border-bottom-color: rgba(255,255,255,0.6);
+            color: var(--moss-deep);
+            border-color: var(--moss-deep);
         }
 
         .project-cta {
             display: inline-block;
-            margin-top: 1.8rem;
-            padding: 0.75rem 1.75rem;
-            background: linear-gradient(135deg, #2c5f2d 0%, #3d7a3e 100%);
-            color: #fff;
+            margin-top: 1.5rem;
+            padding: 0.6rem 1.5rem;
+            background: var(--moss);
+            color: var(--sand);
             text-decoration: none;
-            border: none;
-            border-radius: 4px;
             font-size: 0.85rem;
-            font-weight: 500;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            transition: opacity 0.2s ease, transform 0.2s ease;
+            letter-spacing: 0.05em;
+            transition: background 0.2s;
         }
 
         .project-cta:hover {
-            opacity: 0.88;
-            transform: translateY(-1px);
+            background: var(--moss-deep);
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(0,0,0,0.3);
-            font-size: 0.9rem;
-            color: #999;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            letter-spacing: 0.02em;
+            padding: 2.5rem 2rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-style: italic;
         }
 
         @media (max-width: 768px) {
+            .site-nav {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .site-nav .nav-links {
+                gap: 1.25rem;
+            }
+
             .page-header {
-                padding: 3.5rem 1.5rem 3rem;
+                padding: 3rem 1.5rem 2.5rem;
             }
 
             .projects-content {
@@ -217,33 +200,36 @@
             }
 
             .project-card {
-                margin-bottom: 3.5rem;
-                padding-bottom: 3.5rem;
+                padding-bottom: 3rem;
+                margin-bottom: 3rem;
             }
         }
 
         @media (max-width: 480px) {
-            .tab-nav a {
-                padding: 0.8rem 0.9rem;
-                font-size: 0.68rem;
-                letter-spacing: 0.08em;
+            .site-nav .nav-links {
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <nav class="tab-nav">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/gallery.html">Gallery</a>
-        <a href="/events.html">Events</a>
-        <a href="/projects.html" class="active">Projects</a>
+    <nav class="site-nav">
+        <a href="/" class="wordmark">signfire</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/gallery.html">Gallery</a></li>
+            <li><a href="/events.html">Events</a></li>
+            <li><a href="/projects.html" class="active">Projects</a></li>
+        </ul>
     </nav>
 
     <header class="page-header">
         <h1>Projects</h1>
-        <p>Community art &amp; action beyond the canvas</p>
+        <p class="subtitle">Community art &amp; action</p>
     </header>
 
     <main class="projects-content">
@@ -274,7 +260,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 SignFire's Handcrafted Mandalas on Canvas &amp; Stone</p>
+        <p>&copy; 2025 signfire · Jarrett Terrill</p>
     </footer>
 
 </body>
