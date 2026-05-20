@@ -222,6 +222,49 @@
             margin-top: auto;
         }
 
+        /* ── Collection sections ── */
+        .collection {
+            margin-bottom: 5rem;
+        }
+
+        .collection:last-child {
+            margin-bottom: 0;
+        }
+
+        .collection-header {
+            display: flex;
+            align-items: baseline;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .collection-title {
+            font-style: italic;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--slate);
+            white-space: nowrap;
+        }
+
+        .collection-rule {
+            flex: 1;
+            height: 1px;
+            background: var(--rule);
+        }
+
+        .collection-note {
+            margin-top: 3rem;
+            font-style: italic;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
+        .collection-placeholder {
+            font-style: italic;
+            color: var(--muted);
+            font-size: 0.95rem;
+        }
+
         /* ── Footer ── */
         footer {
             text-align: center;
@@ -274,7 +317,13 @@
     </header>
 
     <main class="gallery">
-        <div class="pieces">
+
+        <section class="collection">
+            <div class="collection-header">
+                <h2 class="collection-title">Stones</h2>
+                <span class="collection-rule"></span>
+            </div>
+            <div class="pieces">
 
             <!-- Punky Stars -->
             <article class="piece"
@@ -365,7 +414,18 @@
                 </div>
             </article>
 
-        </div>
+            </div>
+            <p class="collection-note">More works on the way.</p>
+        </section>
+
+        <section class="collection">
+            <div class="collection-header">
+                <h2 class="collection-title">Canvases</h2>
+                <span class="collection-rule"></span>
+            </div>
+            <p class="collection-placeholder">Canvas works on the way.</p>
+        </section>
+
     </main>
 
     <footer>
