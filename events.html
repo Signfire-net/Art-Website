@@ -3,12 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events | SignFire</title>
+    <title>Events — signfire</title>
     <meta name="description" content="Upcoming arts, music, and community events in Illinois and Indiana that SignFire finds interesting.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --sand:      #FFEDD4;
+            --slate:     #37474F;
+            --moss:      #2F7466;
+            --moss-deep: #1F5249;
+            --rule:      rgba(55, 71, 79, 0.18);
+            --muted:     #6B7A82;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -20,99 +29,73 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #1a0808;
-            color: #f5f5f5;
-            line-height: 1.7;
-            font-size: 17px;
-            letter-spacing: 0.01em;
+            font-family: 'EB Garamond', Garamond, Georgia, serif;
+            background-color: var(--sand);
+            color: var(--slate);
+            line-height: 1.6;
+            font-size: 18px;
+            font-feature-settings: "kern","liga","onum";
         }
 
         ::selection {
-            background: #8b4513;
-            color: #fff;
+            background: var(--moss);
+            color: var(--sand);
         }
 
-        /* Tab Navigation */
-        .tab-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(15, 4, 4, 0.97);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+        /* Nav */
+        .site-nav {
+            border-bottom: 1px solid var(--rule);
             display: flex;
-            justify-content: center;
-            padding: 0 1rem;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 3rem;
         }
 
-        .tab-nav a {
-            display: inline-block;
-            padding: 0.9rem 1.5rem;
-            color: #777;
+        .site-nav .wordmark {
+            font-style: italic;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--slate);
             text-decoration: none;
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
+        }
+
+        .site-nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .site-nav .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 0.09em;
             text-transform: uppercase;
-            font-weight: 500;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
-            transition: color 0.2s ease, border-color 0.2s ease;
+            transition: color 0.2s;
         }
 
-        .tab-nav a:hover {
-            color: #d4d4d4;
-        }
-
-        .tab-nav a.active {
-            color: #f0c080;
-            border-bottom-color: #f0c080;
-        }
+        .site-nav .nav-links a:hover,
+        .site-nav .nav-links a.active { color: var(--slate); }
 
         /* Page header */
         .page-header {
-            position: relative;
             text-align: center;
-            padding: 5rem 2rem 4rem;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 4rem 2rem 3.5rem;
+            border-bottom: 1px solid var(--rule);
         }
 
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(139,69,19,0.1) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .page-header > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .page-title {
-            font-family: 'Bebas Neue', 'Anton', 'Arial Narrow', Impact, sans-serif;
-            font-size: clamp(3.5rem, 9vw, 6rem);
-            font-weight: 400;
-            line-height: 0.9;
-            letter-spacing: 0.05em;
-            background: linear-gradient(135deg, #fff 0%, #f0c080 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        .page-subtitle {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
-            font-weight: 400;
-            color: #d4d4d4;
+        .page-header h1 {
             font-style: italic;
-            max-width: 560px;
-            margin: 0 auto;
+            font-size: 2.25rem;
+            font-weight: 400;
+            color: var(--slate);
+        }
+
+        .page-header .subtitle {
+            margin-top: 0.4rem;
+            font-style: italic;
+            color: var(--muted);
+            font-size: 1rem;
         }
 
         /* Main content */
@@ -122,149 +105,132 @@
             padding: 4rem 2rem 5rem;
         }
 
-        .table-wrapper {
-            overflow-x: auto;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.08);
-        }
-
         table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
         thead tr {
-            border-bottom: 2px solid rgba(240,192,128,0.4);
+            border-bottom: 1px solid var(--slate);
         }
 
         thead th {
             text-align: left;
-            padding: 1rem 1rem 1rem 0;
-            font-family: 'Inter', sans-serif;
-            font-weight: 500;
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
+            padding: 0.6rem 1rem 0.6rem 0;
+            font-size: 0.78rem;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: #f0c080;
-            white-space: nowrap;
+            color: var(--muted);
+            font-weight: 400;
+            font-style: normal;
         }
 
         thead th:first-child {
-            padding-left: 1.25rem;
+            padding-left: 0;
         }
 
         tbody tr {
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            transition: background 0.2s ease;
+            border-bottom: 1px solid var(--rule);
         }
 
         tbody tr:last-child {
             border-bottom: none;
         }
 
-        tbody tr:hover {
-            background: rgba(255,255,255,0.04);
-        }
-
         tbody td {
-            padding: 0.9rem 1rem 0.9rem 0;
+            padding: 0.85rem 1rem 0.85rem 0;
             vertical-align: top;
             line-height: 1.4;
         }
 
         tbody td:first-child {
-            padding-left: 1.25rem;
+            padding-left: 0;
         }
 
         .date {
             white-space: nowrap;
-            font-weight: 600;
-            color: #f0c080;
-            font-variant-numeric: tabular-nums;
+            font-weight: 500;
+            color: var(--slate);
             min-width: 110px;
-            font-size: 0.9rem;
         }
 
         .event-name a {
-            color: #f5f5f5;
+            color: var(--moss);
             text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px solid rgba(240,192,128,0.5);
-            transition: color 0.2s ease, border-color 0.2s ease;
+            border-bottom: 1px solid rgba(47,116,102,0.3);
+            transition: border-color 0.2s;
         }
 
         .event-name a:hover {
-            color: #f0c080;
-            border-color: #f0c080;
+            border-color: var(--moss);
         }
 
         .event-name span {
-            font-weight: 500;
-            color: #f5f5f5;
+            color: var(--slate);
         }
 
         .location {
-            color: #b8b8b8;
-            font-size: 0.9rem;
+            color: var(--muted);
+            font-style: italic;
         }
 
         .cost {
+            color: var(--muted);
             white-space: nowrap;
-            color: #b8b8b8;
-            font-size: 0.9rem;
         }
 
         .type {
+            color: var(--muted);
             font-style: italic;
-            color: #888;
-            font-size: 0.88rem;
+            font-size: 0.9rem;
         }
 
         /* Footer */
         footer {
             text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(0,0,0,0.3);
+            padding: 2.5rem 2rem;
+            border-top: 1px solid var(--rule);
             font-size: 0.85rem;
-            color: #666;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            letter-spacing: 0.02em;
+            color: var(--muted);
+            font-style: italic;
         }
 
-        footer a {
-            color: #b8b8b8;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #f0c080;
+        footer p + p {
+            margin-top: 0.5rem;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            thead th:nth-child(4),
-            tbody td:nth-child(4) {
-                display: none;
+            .site-nav {
+                padding: 1rem 1.5rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .site-nav .nav-links {
+                gap: 1.25rem;
+            }
+
+            .page-header {
+                padding: 3rem 1.5rem 2.5rem;
             }
 
             main {
                 padding: 2.5rem 1.25rem 4rem;
             }
-        }
 
-        @media (max-width: 768px) {
-            .page-header {
-                padding: 3.5rem 1.5rem 3rem;
+            thead th:nth-child(4),
+            tbody td:nth-child(4) {
+                display: none;
             }
         }
 
         @media (max-width: 480px) {
-            .tab-nav a {
-                padding: 0.8rem 0.9rem;
-                font-size: 0.68rem;
-                letter-spacing: 0.08em;
+            .site-nav .nav-links {
+                gap: 0.75rem;
+                flex-wrap: wrap;
+                justify-content: center;
             }
 
             thead th:nth-child(5),
@@ -276,250 +242,251 @@
 </head>
 <body>
 
-    <nav class="tab-nav">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/gallery.html">Gallery</a>
-        <a href="/events.html" class="active">Events</a>
-        <a href="/projects.html">Projects</a>
+    <nav class="site-nav">
+        <a href="/" class="wordmark">signfire</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/gallery.html">Gallery</a></li>
+            <li><a href="/events.html" class="active">Events</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+        </ul>
     </nav>
 
     <header class="page-header">
-        <div class="page-title">Events</div>
-        <p class="page-subtitle">Some upcoming events that I find interesting</p>
+        <h1>Events</h1>
+        <p class="subtitle">Some upcoming events that I find interesting</p>
     </header>
 
     <main>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Event</th>
-                        <th>Location</th>
-                        <th>Cost</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="date">May 16</td>
-                        <td class="event-name"><a href="https://www.3floyds.com/dark-lord-day/" target="_blank" rel="noopener">Dark Lord Day</a></td>
-                        <td class="location">Munster, IN</td>
-                        <td class="cost">Ticketed</td>
-                        <td class="type">craft beer &amp; metal festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">May 17</td>
-                        <td class="event-name"><span>Rhubarb Festival</span></td>
-                        <td class="location">Kankakee, IL</td>
-                        <td class="cost">Free</td>
-                        <td class="type">food &amp; flower festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">May 21–30</td>
-                        <td class="event-name"><span>Banks of the Wabash Festival</span></td>
-                        <td class="location">Terre Haute, IN</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">music festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jun 6</td>
-                        <td class="event-name"><span>Bacon Beer &amp; Bourbon Fest</span></td>
-                        <td class="location">Crown Point, IN</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">food &amp; drink festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jun 11–14</td>
-                        <td class="event-name"><span>Dyer Summerfest</span></td>
-                        <td class="location">Dyer, IN</td>
-                        <td class="cost">Free</td>
-                        <td class="type">multi-stage music festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jun 14</td>
-                        <td class="event-name"><span>Strawberry Jazz Festival</span></td>
-                        <td class="location">Bradley, IL</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">jazz festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jun 19–20</td>
-                        <td class="event-name"><span>Monticello Spirit Festival</span></td>
-                        <td class="location">Monticello, IN</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">community festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jun 21</td>
-                        <td class="event-name"><span>Art in the Alley</span></td>
-                        <td class="location">Rensselaer, IN</td>
-                        <td class="cost">Free</td>
-                        <td class="type">outdoor art fair</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jun 26–29</td>
-                        <td class="event-name"><span>Homer Community Festival</span></td>
-                        <td class="location">Homer Glen, IL</td>
-                        <td class="cost">Free</td>
-                        <td class="type">community festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jun 27–29</td>
-                        <td class="event-name"><span>Plainfield Fest</span></td>
-                        <td class="location">Plainfield, IL</td>
-                        <td class="cost">Free</td>
-                        <td class="type">community carnival &amp; music</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jun (TBD)</td>
-                        <td class="event-name"><a href="https://www.merchantstreetmusicfest.com/" target="_blank" rel="noopener">Merchant Street MusicFest</a></td>
-                        <td class="location">Kankakee, IL</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">arts &amp; music festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jul 4–7</td>
-                        <td class="event-name"><span>Cedar Lake Summerfest</span></td>
-                        <td class="location">Cedar Lake, IN</td>
-                        <td class="cost">Free</td>
-                        <td class="type">lakefront summer festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jul 11–12</td>
-                        <td class="event-name"><span>Frankfort Bluegrass Festival</span></td>
-                        <td class="location">Frankfort, IL</td>
-                        <td class="cost">Free</td>
-                        <td class="type">bluegrass festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jul 23–26</td>
-                        <td class="event-name"><span>Campfire Music Festival</span></td>
-                        <td class="location">St. Anne, IL</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">camping music festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jul 25</td>
-                        <td class="event-name"><span>Festa Italiana</span></td>
-                        <td class="location">Mokena, IL</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">Italian heritage festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jul 25–27</td>
-                        <td class="event-name"><a href="https://www.pierogifest.net" target="_blank" rel="noopener">Pierogi Fest</a></td>
-                        <td class="location">Whiting, IN</td>
-                        <td class="cost">Free</td>
-                        <td class="type">ethnic food festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jul 29–Aug 2</td>
-                        <td class="event-name"><span>Lake County Fair</span></td>
-                        <td class="location">Crown Point, IN</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">county fair</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Jul 31</td>
-                        <td class="event-name"><span>Turkeypalooza</span></td>
-                        <td class="location">Valparaiso, IN</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">music &amp; food festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Aug 2</td>
-                        <td class="event-name"><span>Barro Fest</span></td>
-                        <td class="location">Plainfield, IL</td>
-                        <td class="cost">Free</td>
-                        <td class="type">outdoor music fest</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Aug 5–9</td>
-                        <td class="event-name"><a href="https://www.gladfest.com/" target="_blank" rel="noopener">Momence Gladiolus Festival</a></td>
-                        <td class="location">Momence, IL</td>
-                        <td class="cost">Free</td>
-                        <td class="type">flower festival &amp; parade</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Aug 15</td>
-                        <td class="event-name"><span>New Orleans North</span></td>
-                        <td class="location">Joliet, IL</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">Mardi Gras-style street festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Aug 15</td>
-                        <td class="event-name"><span>Pride Lafayette OUTfest</span></td>
-                        <td class="location">Lafayette, IN</td>
-                        <td class="cost">Free</td>
-                        <td class="type">Pride festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Aug 20–23</td>
-                        <td class="event-name"><span>Will County Fair</span></td>
-                        <td class="location">Peotone, IL</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">county fair</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Aug 21–23</td>
-                        <td class="event-name"><span>SS Constantine &amp; Helen Greek Fest</span></td>
-                        <td class="location">Merrillville, IN</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">Greek heritage festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Aug 22</td>
-                        <td class="event-name"><a href="https://www.rockopellifest.org" target="_blank" rel="noopener">Rockopelli Music Fest</a></td>
-                        <td class="location">Crown Point, IN</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">benefit music festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Aug (TBD)</td>
-                        <td class="event-name"><a href="https://www.kankakeefair.org" target="_blank" rel="noopener">Kankakee County Fair</a></td>
-                        <td class="location">Kankakee, IL</td>
-                        <td class="cost">$10</td>
-                        <td class="type">county fair</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Aug (TBD)</td>
-                        <td class="event-name"><span>Pembroke Rodeo</span></td>
-                        <td class="location">Hopkins Park, IL</td>
-                        <td class="cost">Check site</td>
-                        <td class="type">rodeo</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Sep 4–6</td>
-                        <td class="event-name"><a href="https://shoe-fest.com/" target="_blank" rel="noopener">Shoe Fest</a></td>
-                        <td class="location">Manteno, IL</td>
-                        <td class="cost">~$96+</td>
-                        <td class="type">folk/bluegrass camping festival</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Sep 5–7</td>
-                        <td class="event-name"><span>Frankfort Fall Festival</span></td>
-                        <td class="location">Frankfort, IL</td>
-                        <td class="cost">Free</td>
-                        <td class="type">arts &amp; craft fair</td>
-                    </tr>
-                    <tr>
-                        <td class="date">Sep 12</td>
-                        <td class="event-name"><span>Two Rivers Festival</span></td>
-                        <td class="location">Aroma Park, IL</td>
-                        <td class="cost">Free</td>
-                        <td class="type">community festival &amp; car show</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Event</th>
+                    <th>Location</th>
+                    <th>Cost</th>
+                    <th>Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="date">May 16</td>
+                    <td class="event-name"><a href="https://www.3floyds.com/dark-lord-day/" target="_blank" rel="noopener">Dark Lord Day</a></td>
+                    <td class="location">Munster, IN</td>
+                    <td class="cost">Ticketed</td>
+                    <td class="type">craft beer &amp; metal festival</td>
+                </tr>
+                <tr>
+                    <td class="date">May 17</td>
+                    <td class="event-name"><span>Rhubarb Festival</span></td>
+                    <td class="location">Kankakee, IL</td>
+                    <td class="cost">Free</td>
+                    <td class="type">food &amp; flower festival</td>
+                </tr>
+                <tr>
+                    <td class="date">May 21–30</td>
+                    <td class="event-name"><span>Banks of the Wabash Festival</span></td>
+                    <td class="location">Terre Haute, IN</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">music festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jun 6</td>
+                    <td class="event-name"><span>Bacon Beer &amp; Bourbon Fest</span></td>
+                    <td class="location">Crown Point, IN</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">food &amp; drink festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jun 11–14</td>
+                    <td class="event-name"><span>Dyer Summerfest</span></td>
+                    <td class="location">Dyer, IN</td>
+                    <td class="cost">Free</td>
+                    <td class="type">multi-stage music festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jun 14</td>
+                    <td class="event-name"><span>Strawberry Jazz Festival</span></td>
+                    <td class="location">Bradley, IL</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">jazz festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jun 19–20</td>
+                    <td class="event-name"><span>Monticello Spirit Festival</span></td>
+                    <td class="location">Monticello, IN</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">community festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jun 21</td>
+                    <td class="event-name"><span>Art in the Alley</span></td>
+                    <td class="location">Rensselaer, IN</td>
+                    <td class="cost">Free</td>
+                    <td class="type">outdoor art fair</td>
+                </tr>
+                <tr>
+                    <td class="date">Jun 26–29</td>
+                    <td class="event-name"><span>Homer Community Festival</span></td>
+                    <td class="location">Homer Glen, IL</td>
+                    <td class="cost">Free</td>
+                    <td class="type">community festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jun 27–29</td>
+                    <td class="event-name"><span>Plainfield Fest</span></td>
+                    <td class="location">Plainfield, IL</td>
+                    <td class="cost">Free</td>
+                    <td class="type">community carnival &amp; music</td>
+                </tr>
+                <tr>
+                    <td class="date">Jun (TBD)</td>
+                    <td class="event-name"><a href="https://www.merchantstreetmusicfest.com/" target="_blank" rel="noopener">Merchant Street MusicFest</a></td>
+                    <td class="location">Kankakee, IL</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">arts &amp; music festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jul 4–7</td>
+                    <td class="event-name"><span>Cedar Lake Summerfest</span></td>
+                    <td class="location">Cedar Lake, IN</td>
+                    <td class="cost">Free</td>
+                    <td class="type">lakefront summer festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jul 11–12</td>
+                    <td class="event-name"><span>Frankfort Bluegrass Festival</span></td>
+                    <td class="location">Frankfort, IL</td>
+                    <td class="cost">Free</td>
+                    <td class="type">bluegrass festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jul 23–26</td>
+                    <td class="event-name"><span>Campfire Music Festival</span></td>
+                    <td class="location">St. Anne, IL</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">camping music festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jul 25</td>
+                    <td class="event-name"><span>Festa Italiana</span></td>
+                    <td class="location">Mokena, IL</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">Italian heritage festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jul 25–27</td>
+                    <td class="event-name"><a href="https://www.pierogifest.net" target="_blank" rel="noopener">Pierogi Fest</a></td>
+                    <td class="location">Whiting, IN</td>
+                    <td class="cost">Free</td>
+                    <td class="type">ethnic food festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Jul 29–Aug 2</td>
+                    <td class="event-name"><span>Lake County Fair</span></td>
+                    <td class="location">Crown Point, IN</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">county fair</td>
+                </tr>
+                <tr>
+                    <td class="date">Jul 31</td>
+                    <td class="event-name"><span>Turkeypalooza</span></td>
+                    <td class="location">Valparaiso, IN</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">music &amp; food festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Aug 2</td>
+                    <td class="event-name"><span>Barro Fest</span></td>
+                    <td class="location">Plainfield, IL</td>
+                    <td class="cost">Free</td>
+                    <td class="type">outdoor music fest</td>
+                </tr>
+                <tr>
+                    <td class="date">Aug 5–9</td>
+                    <td class="event-name"><a href="https://www.gladfest.com/" target="_blank" rel="noopener">Momence Gladiolus Festival</a></td>
+                    <td class="location">Momence, IL</td>
+                    <td class="cost">Free</td>
+                    <td class="type">flower festival &amp; parade</td>
+                </tr>
+                <tr>
+                    <td class="date">Aug 15</td>
+                    <td class="event-name"><span>New Orleans North</span></td>
+                    <td class="location">Joliet, IL</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">Mardi Gras-style street festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Aug 15</td>
+                    <td class="event-name"><span>Pride Lafayette OUTfest</span></td>
+                    <td class="location">Lafayette, IN</td>
+                    <td class="cost">Free</td>
+                    <td class="type">Pride festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Aug 20–23</td>
+                    <td class="event-name"><span>Will County Fair</span></td>
+                    <td class="location">Peotone, IL</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">county fair</td>
+                </tr>
+                <tr>
+                    <td class="date">Aug 21–23</td>
+                    <td class="event-name"><span>SS Constantine &amp; Helen Greek Fest</span></td>
+                    <td class="location">Merrillville, IN</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">Greek heritage festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Aug 22</td>
+                    <td class="event-name"><a href="https://www.rockopellifest.org" target="_blank" rel="noopener">Rockopelli Music Fest</a></td>
+                    <td class="location">Crown Point, IN</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">benefit music festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Aug (TBD)</td>
+                    <td class="event-name"><a href="https://www.kankakeefair.org" target="_blank" rel="noopener">Kankakee County Fair</a></td>
+                    <td class="location">Kankakee, IL</td>
+                    <td class="cost">$10</td>
+                    <td class="type">county fair</td>
+                </tr>
+                <tr>
+                    <td class="date">Aug (TBD)</td>
+                    <td class="event-name"><span>Pembroke Rodeo</span></td>
+                    <td class="location">Hopkins Park, IL</td>
+                    <td class="cost">Check site</td>
+                    <td class="type">rodeo</td>
+                </tr>
+                <tr>
+                    <td class="date">Sep 4–6</td>
+                    <td class="event-name"><a href="https://shoe-fest.com/" target="_blank" rel="noopener">Shoe Fest</a></td>
+                    <td class="location">Manteno, IL</td>
+                    <td class="cost">~$96+</td>
+                    <td class="type">folk/bluegrass camping festival</td>
+                </tr>
+                <tr>
+                    <td class="date">Sep 5–7</td>
+                    <td class="event-name"><span>Frankfort Fall Festival</span></td>
+                    <td class="location">Frankfort, IL</td>
+                    <td class="cost">Free</td>
+                    <td class="type">arts &amp; craft fair</td>
+                </tr>
+                <tr>
+                    <td class="date">Sep 12</td>
+                    <td class="event-name"><span>Two Rivers Festival</span></td>
+                    <td class="location">Aroma Park, IL</td>
+                    <td class="cost">Free</td>
+                    <td class="type">community festival &amp; car show</td>
+                </tr>
+            </tbody>
+        </table>
     </main>
 
     <footer>
         <p>Dates subject to change — always verify with the event organizer before you go.</p>
-        <p style="margin-top: 0.75rem;">&copy; 2025 <a href="/">SignFire</a></p>
+        <p>&copy; 2025 signfire · Jarrett Terrill</p>
     </footer>
 
 </body>
