@@ -3,228 +3,391 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | SignFire</title>
-    <meta name="description" content="Gallery of original freehand mandalas on canvas and stone by SignFire artist Jarrett Terrill.">
+    <title>Gallery — signfire</title>
+    <meta name="description" content="Original acrylic mandalas and figurative paintings on canvas and stone by Jarrett Terrill.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Anton&family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --sand:      #FFEDD4;
+            --slate:     #37474F;
+            --moss:      #2F7466;
+            --moss-deep: #1F5249;
+            --rule:      rgba(55, 71, 79, 0.18);
+            --muted:     #6B7A82;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #1a0808;
-            color: #f5f5f5;
-            line-height: 1.7;
-            font-size: 17px;
-            letter-spacing: 0.01em;
+            font-family: 'EB Garamond', Garamond, Georgia, serif;
+            background-color: var(--sand);
+            color: var(--slate);
+            line-height: 1.6;
+            font-size: 18px;
+            font-feature-settings: "kern", "liga", "onum";
         }
 
-        ::selection {
-            background: #8b4513;
-            color: #fff;
-        }
-
-        /* Tab Navigation */
-        .tab-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(15, 4, 4, 0.97);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+        /* ── Nav ── */
+        .site-nav {
+            border-bottom: 1px solid var(--rule);
             display: flex;
-            justify-content: center;
-            padding: 0 1rem;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 3rem;
         }
 
-        .tab-nav a {
-            display: inline-block;
-            padding: 0.9rem 1.5rem;
-            color: #777;
+        .site-nav .wordmark {
+            font-style: italic;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--slate);
             text-decoration: none;
-            font-size: 0.75rem;
-            letter-spacing: 0.12em;
+        }
+
+        .site-nav .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .site-nav .nav-links a {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.82rem;
+            letter-spacing: 0.09em;
             text-transform: uppercase;
-            font-weight: 500;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -1px;
-            transition: color 0.2s ease, border-color 0.2s ease;
+            transition: color 0.2s;
         }
 
-        .tab-nav a:hover {
-            color: #d4d4d4;
+        .site-nav .nav-links a:hover,
+        .site-nav .nav-links a.active {
+            color: var(--slate);
         }
 
-        .tab-nav a.active {
-            color: #f0c080;
-            border-bottom-color: #f0c080;
-        }
-
-        /* Page header */
+        /* ── Page header ── */
         .page-header {
-            position: relative;
             text-align: center;
-            padding: 5rem 2rem 4rem;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 4rem 2rem 3.5rem;
+            border-bottom: 1px solid var(--rule);
         }
 
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 50% 30%, rgba(139,69,19,0.1) 0%, transparent 70%);
-            pointer-events: none;
+        .page-header h1 {
+            font-style: italic;
+            font-size: 2.25rem;
+            font-weight: 400;
+            color: var(--slate);
         }
 
-        .page-header > * {
+        .page-header .subtitle {
+            margin-top: 0.4rem;
+            font-style: italic;
+            color: var(--muted);
+            font-size: 1rem;
+        }
+
+        /* ── Gallery grid ── */
+        .gallery {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem 6rem;
+        }
+
+        .pieces {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3.5rem 2.5rem;
+        }
+
+        /* ── Piece card ── */
+        .piece {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Image area — click to cycle */
+        .piece-images {
             position: relative;
-            z-index: 1;
+            cursor: pointer;
+            line-height: 0;
         }
 
-        h1 {
-            font-family: 'Bebas Neue', 'Anton', 'Arial Narrow', Impact, sans-serif;
-            font-size: clamp(3.5rem, 9vw, 6rem);
-            font-weight: 400;
-            line-height: 0.9;
+        .piece-images img {
+            width: 100%;
+            display: block;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+        }
+
+        .piece.is-unavailable .piece-images img {
+            opacity: 0.7;
+        }
+
+        /* Dot indicators */
+        .piece-dots {
+            display: flex;
+            gap: 0.45rem;
+            justify-content: center;
+            margin-top: 0.65rem;
+            min-height: 0.9rem;
+        }
+
+        .piece-dot {
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--rule);
+            border: 1px solid var(--muted);
+            flex-shrink: 0;
+            transition: background 0.2s;
+        }
+
+        .piece-dot.active {
+            background: var(--slate);
+            border-color: var(--slate);
+        }
+
+        /* Info */
+        .piece-info {
+            padding: 1.25rem 0 0;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+
+        .piece-title {
+            font-size: 1.4rem;
+            font-weight: 500;
+            color: var(--slate);
+            margin-bottom: 0.2rem;
+            line-height: 1.3;
+        }
+
+        .piece-meta {
+            font-style: italic;
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 0.85rem;
+        }
+
+        .piece-description {
+            font-style: italic;
+            color: var(--slate);
+            line-height: 1.5;
+            flex: 1;
+            padding-bottom: 1.25rem;
+        }
+
+        /* Price + button */
+        .piece-action {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--rule);
+            margin-top: auto;
+        }
+
+        .piece-price {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--slate);
+        }
+
+        a.buy {
+            display: inline-block;
+            padding: 0.5rem 1.4rem;
+            background: var(--moss);
+            color: var(--sand);
+            text-decoration: none;
+            font-size: 0.9rem;
             letter-spacing: 0.05em;
-            background: linear-gradient(135deg, #fff 0%, #f0c080 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
+            line-height: 1;
+            transition: background 0.2s;
         }
 
-        .page-subtitle {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            font-weight: 400;
-            color: #b8b8b8;
+        a.buy:hover {
+            background: var(--moss-deep);
+        }
+
+        .piece-status {
+            font-style: italic;
+            color: var(--muted);
+            padding-top: 1.25rem;
+            border-top: 1px solid var(--rule);
+            margin-top: auto;
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.85rem;
+            color: var(--muted);
             font-style: italic;
         }
 
-        /* Gallery */
-        .gallery-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem 5rem;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .grid img {
-            width: 100%;
-            border-radius: 12px;
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-
-        .grid img:hover {
-            transform: scale(1.05) translateY(-5px);
-            box-shadow: 0 12px 40px rgba(139,69,19,0.4);
-        }
-
-        .shop-link {
-            text-align: center;
-            margin-top: 3rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(135deg, #2c5f2d 0%, #3d7a3e 100%);
-            color: #fff;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.03em;
-            transition: all 0.3s ease;
-            box-shadow: 0 6px 20px rgba(44,95,45,0.4);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(44,95,45,0.6);
-            background: linear-gradient(135deg, #3d7a3e 0%, #2c5f2d 100%);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: rgba(0,0,0,0.3);
-            font-size: 0.9rem;
-            color: #999;
-            border-top: 1px solid rgba(255,255,255,0.05);
-            letter-spacing: 0.02em;
-        }
-
+        /* ── Responsive ── */
         @media (max-width: 768px) {
-            .page-header {
-                padding: 3.5rem 1.5rem 3rem;
+            .site-nav {
+                padding: 1rem 1.5rem;
             }
-
-            .gallery-section {
-                padding: 3rem 1.5rem 4rem;
+            .site-nav .nav-links {
+                gap: 1.25rem;
             }
-
-            .grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
+            .gallery {
+                padding: 3.5rem 1.5rem 4.5rem;
             }
         }
 
         @media (max-width: 480px) {
-            .tab-nav a {
-                padding: 0.8rem 0.9rem;
-                font-size: 0.68rem;
-                letter-spacing: 0.08em;
+            .site-nav .nav-links {
+                gap: 0.75rem;
+            }
+            .site-nav .nav-links a {
+                font-size: 0.72rem;
+                letter-spacing: 0.06em;
             }
         }
     </style>
 </head>
 <body>
 
-    <nav class="tab-nav">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-        <a href="/gallery.html" class="active">Gallery</a>
-        <a href="/events.html">Events</a>
-        <a href="/projects.html">Projects</a>
+    <nav class="site-nav">
+        <a href="/" class="wordmark">signfire</a>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/gallery.html" class="active">Gallery</a></li>
+            <li><a href="/events.html">Events</a></li>
+        </ul>
     </nav>
 
     <header class="page-header">
         <h1>Gallery</h1>
-        <p class="page-subtitle">Original freehand mandalas on canvas & stone</p>
+        <p class="subtitle">Original works — canvas &amp; stone</p>
     </header>
 
-    <main class="gallery-section">
-        <div class="grid">
-            <img src="images/painting1.jpg" alt="Canvas Mandala">
-            <img src="images/stone1.jpg" alt="Painted Stone">
-            <img src="images/painting2.jpg" alt="Canvas Mandala">
-        </div>
+    <main class="gallery">
+        <div class="pieces">
 
+            <!-- Punky Stars -->
+            <article class="piece"
+                data-images='["images/punkystars1.jpg","images/punkystars2.jpg","images/punkystarsback.jpg"]'>
+                <div class="piece-images">
+                    <img src="images/punkystars1.jpg" alt="Punky Stars — acrylic on stone">
+                </div>
+                <div class="piece-dots">
+                    <span class="piece-dot active"></span>
+                    <span class="piece-dot"></span>
+                    <span class="piece-dot"></span>
+                </div>
+                <div class="piece-info">
+                    <h2 class="piece-title">Punky Stars</h2>
+                    <p class="piece-meta">Acrylic on stone · two stones, 4.25 × 3 &amp; 6.25 × 7 in · 5 lb 2 oz</p>
+                    <p class="piece-description">Hey! Now that you're a big star... Do you miss the Earth?</p>
+                    <div class="piece-action">
+                        <span class="piece-price">$100 <em style="font-weight:400; font-size:0.9em;">pair</em></span>
+                        <a class="buy" href="https://buy.stripe.com/cNi4gtaNV0kV6Ft9nr9MY03" target="_blank" rel="noopener">Acquire</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Drum Circle -->
+            <article class="piece"
+                data-images='["images/drumcircle1.jpg","images/drumcircle2.jpg","images/drumcircleback.jpg"]'>
+                <div class="piece-images">
+                    <img src="images/drumcircle1.jpg" alt="Drum Circle — acrylic on stone">
+                </div>
+                <div class="piece-dots">
+                    <span class="piece-dot active"></span>
+                    <span class="piece-dot"></span>
+                    <span class="piece-dot"></span>
+                </div>
+                <div class="piece-info">
+                    <h2 class="piece-title">Drum Circle</h2>
+                    <p class="piece-meta">Acrylic on stone · 8.5 × 7 × 3.25 in · 8 lb 8 oz</p>
+                    <p class="piece-description">Beachside bonfires every night. Welcome to your tribe.</p>
+                    <div class="piece-action">
+                        <span class="piece-price">$250</span>
+                        <a class="buy" href="https://buy.stripe.com/5kQdR31dlebL8NBczD9MY02" target="_blank" rel="noopener">Acquire</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Wunderböse -->
+            <article class="piece"
+                data-images='["images/wunderbose1.jpg","images/wunderbose2.jpg","images/wunderboseback.jpg"]'>
+                <div class="piece-images">
+                    <img src="images/wunderbose1.jpg" alt="Wunderböse — acrylic on stone">
+                </div>
+                <div class="piece-dots">
+                    <span class="piece-dot active"></span>
+                    <span class="piece-dot"></span>
+                    <span class="piece-dot"></span>
+                </div>
+                <div class="piece-info">
+                    <h2 class="piece-title">Wunderböse</h2>
+                    <p class="piece-meta">Acrylic on stone · 6.5 × 6 × 3 in · 4 lb 12 oz</p>
+                    <p class="piece-description">Chlorophyll for Melanin? Darkly Beautiful. Wonderfully Wicked.</p>
+                    <div class="piece-action">
+                        <span class="piece-price">$225</span>
+                        <a class="buy" href="https://buy.stripe.com/cNibIV09h2t39RF4379MY01" target="_blank" rel="noopener">Acquire</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- The Learning Tree (Tree of Knowledge) -->
+            <article class="piece"
+                data-images='["images/learningtree1.jpg","images/learningtree2.jpg","images/learningtree3.jpg","images/learningtreeback.jpg"]'>
+                <div class="piece-images">
+                    <img src="images/learningtree1.jpg" alt="The Learning Tree — acrylic on stone">
+                </div>
+                <div class="piece-dots">
+                    <span class="piece-dot active"></span>
+                    <span class="piece-dot"></span>
+                    <span class="piece-dot"></span>
+                    <span class="piece-dot"></span>
+                </div>
+                <div class="piece-info">
+                    <h2 class="piece-title">The Learning Tree <em style="font-size:0.85em; font-weight:400;">(Tree of Knowledge)</em></h2>
+                    <p class="piece-meta">Acrylic on stone · 8.75 × 7 × 3.25 in · 7 lb 15 oz</p>
+                    <p class="piece-description">Still the best place to read a book... after all these years.</p>
+                    <div class="piece-action">
+                        <span class="piece-price">$350</span>
+                        <a class="buy" href="https://buy.stripe.com/28EfZb8FNd7H0h54379MY00" target="_blank" rel="noopener">Acquire</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
     </main>
 
     <footer>
-        <p>&copy; 2025 SignFire's Handcrafted Mandalas on Canvas & Stone</p>
+        <p>&copy; 2025 signfire · Jarrett Terrill</p>
     </footer>
+
+    <script>
+        document.querySelectorAll('.piece').forEach(piece => {
+            const images = JSON.parse(piece.dataset.images || '[]');
+            if (images.length < 2) return;
+
+            const img = piece.querySelector('.piece-images img');
+            const dots = piece.querySelectorAll('.piece-dot');
+            let current = 0;
+
+            piece.querySelector('.piece-images').addEventListener('click', () => {
+                current = (current + 1) % images.length;
+                img.src = images[current];
+                dots.forEach((d, i) => d.classList.toggle('active', i === current));
+            });
+        });
+    </script>
 
 </body>
 </html>
