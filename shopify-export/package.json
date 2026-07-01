@@ -1,0 +1,10 @@
+{
+  "name": "shopify-export",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Export all product data and images from Shopify store (signfire-fine-art.myshopify.com)",
+  "scripts": {
+    "export": "node export-products.js",
+    "export:dry-run": "DRY_RUN=true node export-products.js"
+  }
+}
