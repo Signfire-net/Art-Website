@@ -165,6 +165,86 @@
                 justify-content: center;
             }
         }
+
+        /* ══════════════════════════════════════════════════════
+           SIGNFIRE DARK — Stage 1 (Sept 2026)
+           Late-80s noir studio: black wall, silver type, the
+           artwork is the only color on the page.
+           The whole palette is these six variables. To revert,
+           delete this block — nothing above it was changed.
+           ══════════════════════════════════════════════════════ */
+        :root {
+            color-scheme: dark;
+            --sand:      #000000;                    /* page */
+            --slate:     #E6E6E8;                    /* type — 17.9:1 */
+            --moss:      #E6E6E8;                    /* Acquire button */
+            --moss-deep: #FFFFFF;                    /* button hover */
+            --rule:      rgba(230, 230, 232, 0.16);  /* hairlines */
+            --muted:     #8E8E94;                    /* captions — 5.6:1 */
+        }
+
+        /* Sans only, sitewide. Italics are left intact —
+           to kill them too, add font-style: normal here. */
+        body, h1, h2, h3, h4, p, li, a, em, span,
+        button, input, textarea, label, footer {
+            font-family: "Helvetica Neue", Helvetica, "Segoe UI",
+                         Roboto, system-ui, -apple-system, Arial, sans-serif;
+        }
+
+        body {
+            font-weight: 400;          /* thin strokes bloom on black */
+            letter-spacing: 0.005em;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, .collection-title, .piece-title { letter-spacing: -0.015em; }
+
+        /* No fog on unavailable work. The picture stays clear;
+           the absent Acquire button is the whole signal. */
+        .piece.is-unavailable .piece-images img { opacity: 1; }
+
+        /* Mobile: a grid to scan, not one piece per screen. */
+        @media (max-width: 700px) {
+            .pieces {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 2.25rem 1rem;
+            }
+            .gallery       { padding: 2.5rem 1rem 3.5rem; }
+            .piece-info    { padding-top: 0.85rem; }
+            .piece-title   { font-size: 1.05rem; }
+            .piece-meta    { font-size: 0.78rem; margin-bottom: 0.5rem; }
+            .piece-description { font-size: 0.85rem; line-height: 1.45; padding-bottom: 0.9rem; }
+            .piece-status  { font-size: 0.8rem; padding-top: 0.9rem; }
+            .piece-price   { font-size: 1rem; }
+            .piece-action  {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.6rem;
+                padding-top: 0.9rem;
+            }
+            a.buy          { text-align: center; padding: 0.65rem 1rem; }
+            .collection-header { margin-bottom: 1.75rem; }
+            .collection-title  { font-size: 1.3rem; }
+            .page-header   { padding: 2.5rem 1.5rem 2rem; }
+
+            /* Nav: sans is wider than Garamond — stack it so the
+               wordmark and the links stop colliding. */
+            .site-nav {
+                flex-direction: column;
+                gap: 0.65rem;
+                padding: 0.9rem 1rem;
+            }
+            .site-nav .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.95rem;
+            }
+            .site-nav .nav-links a {
+                font-size: 0.7rem;
+                letter-spacing: 0.05em;
+            }
+            .site-nav .wordmark { font-size: 1.35rem; }
+        }
     </style>
 </head>
 <body>
