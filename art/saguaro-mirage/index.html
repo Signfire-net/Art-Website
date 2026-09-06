@@ -3,11 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery — signfire</title>
-    <meta name="description" content="Original acrylic mandalas and figurative paintings on canvas and stone by Jarrett Terrill.">
+    <title>Saguaro Mirage — Original Acrylic on Canvas | Signfire</title>
+    <meta name="description" content="Saguaro Mirage, an original acrylic work by Jarrett Terrill, now in a private collection. See the one-of-one mandalas at Signfire.net">
+    <link rel="canonical" href="https://signfire.net/art/saguaro-mirage/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Signfire">
+    <meta property="og:title" content="Saguaro Mirage — Original Acrylic on Canvas">
+    <meta property="og:description" content="Saguaro Mirage, an original acrylic work by Jarrett Terrill, now in a private collection. See the one-of-one mandalas at Signfire.net">
+    <meta property="og:url" content="https://signfire.net/art/saguaro-mirage/">
+    <meta property="og:image" content="https://signfire.net/images/canvasseguaromirage1.jpg">
+    <meta property="og:image:width" content="1080">
+    <meta property="og:image:height" content="1078">
+    <meta property="og:image:alt" content="Saguaro Mirage — acrylic on canvas">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Saguaro Mirage — Original Acrylic on Canvas">
+    <meta name="twitter:description" content="Saguaro Mirage, an original acrylic work by Jarrett Terrill, now in a private collection. See the one-of-one mandalas at Signfire.net">
+    <meta name="twitter:image" content="https://signfire.net/images/canvasseguaromirage1.jpg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "VisualArtwork",
+      "@id": "https://signfire.net/art/saguaro-mirage/#artwork",
+      "name": "Saguaro Mirage",
+      "url": "https://signfire.net/art/saguaro-mirage/",
+      "artform": "Painting",
+      "artMedium": "Acrylic on canvas",
+      "creator": {
+        "@type": "Person",
+        "name": "Jarrett Terrill",
+        "url": "https://signfire.net"
+      },
+      "copyrightHolder": {
+        "@type": "Person",
+        "name": "Jarrett Terrill"
+      },
+      "copyrightNotice": "© 2026 Jarrett Terrill / Signfire",
+      "creditText": "Signfire / Jarrett Terrill",
+      "license": "https://signfire.net",
+      "acquireLicensePage": "https://signfire.net",
+      "image": [
+        {
+          "@id": "https://signfire.net/images/canvasseguaromirage1.jpg"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "availability": "https://schema.org/SoldOut",
+        "price": "0",
+        "priceCurrency": "USD",
+        "url": "https://signfire.net/art/saguaro-mirage/",
+        "seller": {
+          "@type": "Person",
+          "name": "Jarrett Terrill"
+        }
+      }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "https://signfire.net/images/canvasseguaromirage1.jpg",
+      "contentUrl": "https://signfire.net/images/canvasseguaromirage1.jpg",
+      "caption": "Saguaro Mirage, front",
+      "creator": {
+        "@type": "Person",
+        "name": "Jarrett Terrill"
+      },
+      "creditText": "Signfire / Jarrett Terrill",
+      "copyrightNotice": "© 2026 Jarrett Terrill / Signfire",
+      "license": "https://signfire.net",
+      "acquireLicensePage": "https://signfire.net"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://signfire.net/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Gallery",
+          "item": "https://signfire.net/gallery.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Saguaro Mirage"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+
     <style>
         :root {
             --sand:      #FFEDD4;
@@ -377,35 +476,149 @@
             }
             .site-nav .wordmark { font-size: 1.35rem; }
         }
+    
+        /* ══════════════════════════════════════════════════════
+           PIECE PAGE — added Sept 2026
+           Uses the same six variables as everything else.
+           ══════════════════════════════════════════════════════ */
+        .piece-page {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3.5rem 2rem 5rem;
+        }
 
-        /* ── Cards link out to a piece page (Sept 2026) ── */
-        .piece-images.is-link { display: block; }
-        /* width/height attributes reserve space and stop layout shift, but without
-           height:auto the attribute beats aspect-ratio and the image renders tall. */
-        .piece-images img { height: auto; }
-        .piece-title a {
-            color: inherit;
-            text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s;
+        .breadcrumb {
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--muted);
+            margin-bottom: 2.5rem;
         }
-        .piece-title a:hover { border-bottom-color: var(--rule); }
-        a.view {
-            display: inline-block;
-            padding: 0.5rem 1.4rem;
-            border: 1px solid var(--moss);
-            color: var(--moss);
-            text-decoration: none;
+        .breadcrumb a { color: var(--muted); text-decoration: none; }
+        .breadcrumb a:hover { color: var(--slate); }
+        .breadcrumb span { margin: 0 0.5rem; opacity: 0.5; }
+
+        .piece-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+            gap: 3.5rem;
+            align-items: start;
+        }
+
+        .viewer figure { margin: 0; line-height: 0; }
+        .viewer img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .thumbs {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 0.75rem;
+        }
+        .thumbs button {
+            flex: 1;
+            padding: 0;
+            border: 1px solid transparent;
+            background: none;
+            cursor: pointer;
+            line-height: 0;
+        }
+        .thumbs button[aria-current="true"] { border-color: var(--slate); }
+        .thumbs img { width: 100%; height: auto; display: block; aspect-ratio: 1 / 1; object-fit: cover; }
+
+        .viewer figcaption {
+            margin-top: 0.9rem;
+            font-style: italic;
             font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            line-height: 1;
-            transition: background 0.2s, color 0.2s;
+            color: var(--muted);
+            line-height: 1.5;
         }
-        a.view:hover { background: var(--moss); color: var(--sand); }
+
+        .detail h1 {
+            font-style: italic;
+            font-size: 2.1rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .detail .spec {
+            font-style: italic;
+            color: var(--muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .detail .lede {
+            font-style: italic;
+            font-size: 1.15rem;
+            line-height: 1.5;
+            margin-bottom: 1.75rem;
+        }
+
+        .detail p { margin-bottom: 1.1rem; }
+
+        .facts {
+            list-style: none;
+            border-top: 1px solid var(--rule);
+            margin: 1.75rem 0 0;
+        }
+        .facts li {
+            display: flex;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid var(--rule);
+            font-size: 0.92rem;
+        }
+        .facts li:last-child { border-bottom: none; }
+        .facts .k { color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.75rem; }
+        .facts .v { text-align: right; }
+
+        .acquire {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-top: 1.25rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--rule);
+        }
+        .acquire .price { font-size: 1.4rem; font-weight: 500; }
+        .acquire .note {
+            display: block;
+            margin-top: 1.1rem;
+            font-size: 0.85rem;
+            font-style: italic;
+            color: var(--muted);
+        }
+
+        .back-to-gallery {
+            display: block;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--rule);
+            text-align: center;
+            font-style: italic;
+            color: var(--muted);
+            text-decoration: none;
+        }
+        .back-to-gallery:hover { color: var(--slate); }
+
+        @media (max-width: 860px) {
+            .piece-layout { grid-template-columns: 1fr; gap: 2.25rem; }
+        }
         @media (max-width: 700px) {
-            a.view { text-align: center; padding: 0.65rem 1rem; }
+            .piece-page { padding: 2rem 1rem 3.5rem; }
+            .breadcrumb { margin-bottom: 1.5rem; font-size: 0.7rem; }
+            .detail h1 { font-size: 1.6rem; }
+            .detail .lede { font-size: 1rem; }
+            .acquire { flex-direction: column; align-items: stretch; gap: 0.75rem; }
+            .acquire a.buy { text-align: center; padding: 0.75rem 1rem; }
         }
-    </style>
+</style>
 </head>
 <body>
 
@@ -420,203 +633,59 @@
         </ul>
     </nav>
 
-    <header class="page-header">
-        <h1>Gallery</h1>
-        <p class="subtitle">Original works — canvas &amp; stone</p>
-    </header>
+    <main class="piece-page">
 
-    <main class="gallery">
+        <p class="breadcrumb">
+            <a href="/">Home</a><span>/</span><a href="/gallery.html">Gallery</a><span>/</span>Saguaro Mirage
+        </p>
 
-        <section class="collection">
-            <div class="collection-header">
-                <h2 class="collection-title">Stones</h2>
-                <span class="collection-rule"></span>
+        <div class="piece-layout">
+
+            <div class="viewer">
+                <figure>
+                    <img id="hero" src="/images/canvasseguaromirage1.jpg" width="1080" height="1078"
+                         alt="Saguaro Mirage — acrylic on canvas">
+                    <figcaption id="hero-caption">Acrylic on canvas.</figcaption>
+                </figure>
             </div>
-            <div class="pieces">
-            <!-- Disco Armadillo -->
-            <article class="piece">
-                <a class="piece-images is-link" href="/art/disco-armadillo/">
-                    <picture>
-                        <source srcset="/images/disco-armadillo-mandala-stone-front-800.webp" type="image/webp">
-                        <img src="/images/disco-armadillo-mandala-stone-front-800.jpg" width="800" height="800" loading="lazy" alt="Disco Armadillo — acrylic on stone">
-                    </picture>
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/disco-armadillo/">Disco Armadillo</a></h2>
-                    <p class="piece-meta">Acrylic on stone &middot; 7.5 &times; 8 &times; 1.75 in &middot; 5 lb 5 oz</p>
-                    <p class="piece-description">His dancefloor may be a battlefield, but he&rsquo;s digging all the grooves.</p>
-                    <div class="piece-action">
-                        <span class="piece-price">$80</span>
-                        <a class="view" href="/art/disco-armadillo/">View</a>
-                    </div>
-                </div>
-            </article>
 
-            <!-- Punky Stars -->
-            <article class="piece">
-                <a class="piece-images is-link" href="/art/punky-stars/">
-                    <img src="/images/punkystars1.jpg" width="402" height="436" loading="lazy" alt="Punky Stars — acrylic on stone">
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/punky-stars/">Punky Stars</a></h2>
-                    <p class="piece-meta">Acrylic on stone · two stones, 4.25 × 3 &amp; 6.25 × 7 in · 5 lb 2 oz</p>
-                    <p class="piece-description">Hey! Now that you're a big star... Do you miss the Earth?</p>
-                    <div class="piece-action">
-                        <span class="piece-price">$35 pair</span>
-                        <a class="view" href="/art/punky-stars/">View</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Drum Circle -->
-            <article class="piece">
-                <a class="piece-images is-link" href="/art/drum-circle/">
-                    <img src="/images/drumcircle1.jpg" width="1884" height="2083" loading="lazy" alt="Drum Circle — acrylic on stone">
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/drum-circle/">Drum Circle</a></h2>
-                    <p class="piece-meta">Acrylic on stone · 8.5 × 7 × 3.25 in · 8 lb 8 oz</p>
-                    <p class="piece-description">Beachside bonfires every night. Welcome to your tribe.</p>
-                    <div class="piece-action">
-                        <span class="piece-price">$110</span>
-                        <a class="view" href="/art/drum-circle/">View</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Wunderböse -->
-            <article class="piece">
-                <a class="piece-images is-link" href="/art/wunderbose/">
-                    <img src="/images/wunderbose1.jpg" width="2045" height="1884" loading="lazy" alt="Wunderböse — acrylic on stone">
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/wunderbose/">Wunderböse</a></h2>
-                    <p class="piece-meta">Acrylic on stone · 6.5 × 6 × 3 in · 4 lb 12 oz</p>
-                    <p class="piece-description">Chlorophyll for Melanin? Darkly Beautiful. Wonderfully Wicked.</p>
-                    <div class="piece-action">
-                        <span class="piece-price">$75</span>
-                        <a class="view" href="/art/wunderbose/">View</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- The Learning Tree (Tree of Knowledge) -->
-            <article class="piece">
-                <a class="piece-images is-link" href="/art/the-learning-tree/">
-                    <img src="/images/learningtree1.jpg" width="1859" height="1480" loading="lazy" alt="The Learning Tree — acrylic on stone">
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/the-learning-tree/">The Learning Tree <em style="font-size:0.85em; font-weight:400;">(Tree of Knowledge)</em></a></h2>
-                    <p class="piece-meta">Acrylic on stone · 8.75 × 7 × 3.25 in · 7 lb 15 oz</p>
-                    <p class="piece-description">Still the best place to read a book... after all these years.</p>
-                    <div class="piece-action">
-                        <span class="piece-price">$125</span>
-                        <a class="view" href="/art/the-learning-tree/">View</a>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Milagro -->
-            <article class="piece is-unavailable">
-                <a class="piece-images is-link" href="/art/milagro/">
-                    <img src="/images/stonesmilagro1.jpg" width="1116" height="1200" loading="lazy" alt="Milagro — acrylic on stone">
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/milagro/">Milagro</a></h2>
-                    <p class="piece-meta">Acrylic on stone</p>
-                    <p class="piece-status">In The Private Collection of S. M. Perez-Andrade</p>
-                </div>
-            </article>
+            <div class="detail">
+                <h1>Saguaro Mirage</h1>
+                <p class="spec">Acrylic on canvas</p>
+                
+                
+                <ul class="facts"><li><span class="k">Medium</span><span class="v">Acrylic on canvas</span></li><li><span class="k">Edition</span><span class="v">One of one</span></li></ul>
+                <p class="piece-status" style="margin-top:2rem">In The Private Collection of C. W. T.</p>
             </div>
-            <p class="collection-note">More works on the way.</p>
-        </section>
 
-        <section class="collection">
-            <div class="collection-header">
-                <h2 class="collection-title">Canvases</h2>
-                <span class="collection-rule"></span>
-            </div>
-            <div class="pieces">
-            <!-- Swan Dive -->
-            <article class="piece is-unavailable">
-                <a class="piece-images is-link" href="/art/swan-dive/">
-                    <img src="/images/canvasswandive1.jpg" width="915" height="1200" loading="lazy" alt="Swan Dive — acrylic on canvas">
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/swan-dive/">Swan Dive</a></h2>
-                    <p class="piece-meta">Acrylic on canvas · commission</p>
-                    <p class="piece-status">In The Private Collection of D. L. Perry</p>
-                </div>
-            </article>
+        </div>
 
-            <!-- Set Fire To The Rain -->
-            <article class="piece is-unavailable">
-                <a class="piece-images is-link" href="/art/set-fire-to-the-rain/">
-                    <img src="/images/canvassetfiretotherain1.jpg" width="1051" height="1200" loading="lazy" alt="Set Fire To The Rain — acrylic on canvas">
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/set-fire-to-the-rain/">Set Fire To The Rain</a></h2>
-                    <p class="piece-meta">Acrylic on canvas · part two</p>
-                    <p class="piece-status">In The Private Collection of D. L. Perry</p>
-                </div>
-            </article>
-
-            <!-- Azteca Royale -->
-            <article class="piece is-unavailable">
-                <a class="piece-images is-link" href="/art/azteca-royale/">
-                    <img src="/images/canvasaztecaroyale1.jpg" width="1067" height="1052" loading="lazy" alt="Azteca Royale — acrylic on canvas">
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/azteca-royale/">Azteca Royale</a></h2>
-                    <p class="piece-meta">Acrylic on canvas · commission</p>
-                    <p class="piece-status">In The Private Collection of E. Acevedo</p>
-                </div>
-            </article>
-
-            <!-- You Spin Me -->
-            <article class="piece is-unavailable">
-                <a class="piece-images is-link" href="/art/you-spin-me/">
-                    <img src="/images/canvasyouspinme1.jpg" width="1200" height="1054" loading="lazy" alt="You Spin Me — acrylic on canvas">
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/you-spin-me/">You Spin Me</a></h2>
-                    <p class="piece-meta">Acrylic on canvas</p>
-                    <p class="piece-status">In The Private Collection of A. Hunte</p>
-                </div>
-            </article>
-
-            <!-- Saguaro Mirage -->
-            <article class="piece is-unavailable">
-                <a class="piece-images is-link" href="/art/saguaro-mirage/">
-                    <img src="/images/canvasseguaromirage1.jpg" width="1080" height="1078" loading="lazy" alt="Saguaro Mirage — acrylic on canvas">
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/saguaro-mirage/">Saguaro Mirage</a></h2>
-                    <p class="piece-meta">Acrylic on canvas</p>
-                    <p class="piece-status">In The Private Collection of C. W. T.</p>
-                </div>
-            </article>
-
-            <!-- Amir Ikhana -->
-            <article class="piece is-unavailable">
-                <a class="piece-images is-link" href="/art/amir-ikhana/">
-                    <img src="/images/canvasamirikhana1.jpg" width="1200" height="1200" loading="lazy" alt="Amir Ikhana — acrylic on canvas">
-                </a>
-                <div class="piece-info">
-                    <h2 class="piece-title"><a href="/art/amir-ikhana/">Amir Ikhana</a></h2>
-                    <p class="piece-meta">Acrylic on canvas · awarded</p>
-                    <p class="piece-status">In The Private Collection of T. Smith</p>
-                </div>
-            </article>
-            </div>
-        </section>
+        <a class="back-to-gallery" href="/gallery.html">&larr; Back to the gallery</a>
 
     </main>
 
     <footer>
-        <p>&copy; 2025 signfire · Jarrett Terrill</p>
+        <p>&copy; 2025 signfire &middot; Jarrett Terrill</p>
     </footer>
 
+    <script>
+        (function () {
+            const hero    = document.getElementById('hero');
+            const caption = document.getElementById('hero-caption');
+            const source  = hero.parentElement.querySelector('source');
+            const buttons = document.querySelectorAll('.thumbs button');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    hero.removeAttribute('srcset');
+                    if (source && btn.dataset.webp) source.srcset = btn.dataset.webp;
+                    hero.src = btn.dataset.src;
+                    if (btn.dataset.w) { hero.width = btn.dataset.w; hero.height = btn.dataset.h; }
+                    caption.textContent = btn.dataset.caption;
+                    buttons.forEach(b => b.setAttribute('aria-current', b === btn ? 'true' : 'false'));
+                });
+            });
+        })();
+    </script>
 
 </body>
 </html>
