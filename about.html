@@ -16,6 +16,8 @@
             --moss-deep: #1F5249;
             --rule:      rgba(55, 71, 79, 0.18);
             --muted:     #6B7A82;
+            --link:      #2F7466;                    /* prose links */
+            --link-rule: rgba(47, 116, 102, 0.55);   /* their underline */
         }
 
         * {
@@ -244,6 +246,32 @@
                 letter-spacing: 0.05em;
             }
             .site-nav .wordmark { font-size: 1.35rem; }
+        }
+        /* ── Prose links (Sept 2026) ──────────────────────────────
+           The dark block above sets --moss to the same silver as the
+           body text, so in-text links had no colour signal left, and
+           their old border-bottom was a light-theme green at 35% on
+           black. An underline carries the signal instead — no new
+           colour introduced. Amber is the dark theme's accent.
+           ───────────────────────────────────────────────────────── */
+        :root {
+            --link:      #C2703C;
+            --link-rule: rgba(194, 112, 60, 0.9);
+        }
+
+        .about-content a {
+            color: var(--link);
+            border-bottom: none;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.2em;
+            text-decoration-color: var(--link-rule);
+            transition: text-decoration-color 0.2s, color 0.2s;
+        }
+
+        .about-content a:hover {
+            color: #D98950;
+            text-decoration-color: #D98950;
         }
     </style>
 </head>

@@ -16,6 +16,8 @@
             --moss-deep: #1F5249;
             --rule:      rgba(55, 71, 79, 0.18);
             --muted:     #6B7A82;
+            --link:      #2F7466;                    /* prose links */
+            --link-rule: rgba(47, 116, 102, 0.55);   /* their underline */
         }
 
         * {
@@ -295,6 +297,32 @@
             }
             .site-nav .wordmark { font-size: 1.35rem; }
         }
+        /* ── Prose links (Sept 2026) ──────────────────────────────
+           The dark block above sets --moss to the same silver as the
+           body text, so in-text links had no colour signal left, and
+           their old border-bottom was a light-theme green at 35% on
+           black. An underline carries the signal instead — no new
+           colour introduced. Amber is the dark theme's accent.
+           ───────────────────────────────────────────────────────── */
+        :root {
+            --link:      #C2703C;
+            --link-rule: rgba(194, 112, 60, 0.9);
+        }
+
+        .project-body a:not(.project-cta) {
+            color: var(--link);
+            border-bottom: none;
+            text-decoration: underline;
+            text-decoration-thickness: 1px;
+            text-underline-offset: 0.2em;
+            text-decoration-color: var(--link-rule);
+            transition: text-decoration-color 0.2s, color 0.2s;
+        }
+
+        .project-body a:not(.project-cta):hover {
+            color: #D98950;
+            text-decoration-color: #D98950;
+        }
     </style>
 </head>
 <body>
@@ -323,7 +351,7 @@
             <div class="project-body">
                 <p>Did you find a painted rock with either "Signfire.net" or "#K3Rocks" on it?</p>
                 <p>The Signfire rocks act as an advertisement and as a business card so to speak. You can keep it to remember my website address or you can rehide it for someone else to find. I appreciate your help in my free guerilla advertising campaign.</p>
-                <p>The "K3Rocks" were not my idea but they definitely inspire me to participate all the time. The original <a href="https://www.facebook.com/groups/309385109420418" target="_blank" rel="noopener">#K3Rocks Facebook group is here</a>. But it's worth looking up the hashtag on X, Bluesky, Instagram and other social networks as well.</p>
+                <p>The "K3Rocks" were not my idea but they definitely inspire me to participate all the time. The original <a href="https://www.facebook.com/groups/309385109420418/" target="_blank" rel="noopener">#K3Rocks Facebook group is here</a>. But it's worth looking up the hashtag on X, Bluesky, Instagram and other social networks as well.</p>
                 <p>The point of the Hide-A-Rock game is kept deliberately simple so that people of all ages &amp; abilities can enjoy it. An artist paints a small rock and then hides it somewhere and hopes the person who finds it enjoys finding it as much as the artist enjoyed making it.</p>
                 <p>Optionally, there are other add-on rules to some hide-a-rock games, regionally, but that covers the core principle. Sometimes, a hide-a-rock game that uses an internet hashtag like #K3Rocks wants everyone who finds the rocks to photograph themselves with the rock they found and rehide it somewhere as far away as they can from the place where they found it. In this case, the "winners" of the game are the rocks that have traveled the farthest distances around the world.</p>
             </div>
